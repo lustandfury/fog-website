@@ -24,7 +24,7 @@ const NAVIGATION_ICONS = [
   'HexagonIcon', 'HomeIcon', 'HourglassIcon', 'IndustryIcon', 'KeyIcon', 'Keyframes',
   'LaptopIcon', 'LightBulb', 'LockKey', 'MagicWand', 'MediaImage', 'NavArrowDown',
   'NetworkIcon', 'PaletteIcon', 'PinIcon', 'PlanetSat', 'PlayIcon', 'PuzzleIcon',
-  'RocketIcon', 'SearchWindow', 'ShieldIcon', 'SparklesIcon', 'StarIcon', 'SunLight',
+  'RocketIcon', 'SearchWindow', 'ShieldIcon', 'SparklesIcon', 'CircleSpark', 'StarIcon', 'SunLight',
   'ThunderIcon', 'TrophyIcon', 'UmbrellaIcon', 'VoiceCircled', 'WalletIcon', 'WifiIcon'
 ];
 
@@ -43,7 +43,14 @@ Builder.register('model', {
     {
       name: 'logo',
       type: 'url',
-      defaultValue: 'https://cdn.builder.io/api/v1/image/assets%2F3726974884634c6bab0631b586f830bd%2Fa6435ad228f54573849a4538f49f85d9'
+      defaultValue: 'https://cdn.builder.io/api/v1/image/assets%2F3726974884634c6bab0631b586f830bd%2Fa6435ad228f54573849a4538f49f85d9',
+      helperText: 'URL of the logo image'
+    },
+    {
+      name: 'logoUrl',
+      type: 'string',
+      defaultValue: '/',
+      helperText: 'URL to navigate to when clicking the logo'
     },
     {
       name: 'primaryItems',
@@ -57,8 +64,7 @@ Builder.register('model', {
         },
         {
           name: 'url',
-          type: 'string',
-          required: true,
+          type: 'string'
         },
         {
           name: 'dropdownItems',
@@ -68,20 +74,41 @@ Builder.register('model', {
               name: 'title',
               type: 'string',
               required: true,
+              helperText: 'Title of the dropdown item'
             },
             {
               name: 'description',
-              type: 'string',
+              type: 'longText',
+              helperText: 'Description text for the dropdown item'
             },
             {
               name: 'url',
               type: 'string',
               required: true,
+              helperText: 'URL to navigate to when clicking the item'
             },
             {
-              name: 'icon',
+              name: 'isOffering',
+              type: 'boolean',
+              defaultValue: false,
+              helperText: 'Enable to display as an offering card with header, description and image'
+            },
+            {
+              name: 'offeringImageUrl',
+              type: 'file',
+              helperText: 'Image for the offering card (only used if isOffering is enabled)'
+            },
+            {
+              name: 'offeringAltText',
               type: 'string',
-              enum: NAVIGATION_ICONS,
+              defaultValue: '',
+              helperText: 'Alt text for the offering image'
+            },
+            {
+              name: 'offeringLinkText',
+              type: 'string',
+              defaultValue: 'Learn about our Workshop',
+              helperText: 'Text for the offering card link (only used if isOffering is enabled)'
             }
           ]
         }
@@ -144,20 +171,41 @@ Builder.registerComponent(Navbar, {
               name: 'title',
               type: 'string',
               required: true,
+              helperText: 'Title of the dropdown item'
             },
             {
               name: 'description',
               type: 'string',
+              helperText: 'Description text for the dropdown item'
             },
             {
               name: 'url',
               type: 'string',
               required: true,
+              helperText: 'URL to navigate to when clicking the item'
             },
             {
-              name: 'icon',
+              name: 'isOffering',
+              type: 'boolean',
+              defaultValue: false,
+              helperText: 'Enable to display as an offering card with header, description and image'
+            },
+            {
+              name: 'offeringImageUrl',
+              type: 'file',
+              helperText: 'Image for the offering card (only used if isOffering is enabled)'
+            },
+            {
+              name: 'offeringAltText',
               type: 'string',
-              enum: NAVIGATION_ICONS,
+              defaultValue: '',
+              helperText: 'Alt text for the offering image'
+            },
+            {
+              name: 'offeringLinkText',
+              type: 'string',
+              defaultValue: 'Learn about our Workshop',
+              helperText: 'Text for the offering card link (only used if isOffering is enabled)'
             }
           ]
         }

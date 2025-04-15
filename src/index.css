@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes typing {
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typeDescription {
   from {
     width: 0;
     opacity: 0;
@@ -13,12 +24,18 @@
   }
 }
 
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+/* Add smooth scrolling to the page */
+html {
+  scroll-behavior: smooth;
 }
 
-.animate-typing {
-  animation: typing 0.75s steps(40, end), blink 0.75s step-end infinite;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

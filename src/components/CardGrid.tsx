@@ -55,4 +55,3 @@ export function CardGrid({
   );
 }
 
-export default CardGrid;

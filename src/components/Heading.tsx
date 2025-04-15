@@ -20,4 +20,3 @@ export function Heading({ title = '', size = 'medium', attributes }: HeadingProp
   );
 }
 
-export default Heading;

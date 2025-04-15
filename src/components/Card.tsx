@@ -10,7 +10,7 @@ interface CardProps {
 
 export function Card({ title = '', description = '', imageUrl, attributes }: CardProps) {
   return (
-    <div {...attributes} className={`bg-white rounded-lg shadow-md overflow-hidden ${attributes?.className || ''}`}>
+    <div {...attributes} className={`bg-white rounded-lg shadow-md ${attributes?.className || ''}`}>
       {imageUrl ? (
         <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
       ) : (
@@ -26,4 +26,3 @@ export function Card({ title = '', description = '', imageUrl, attributes }: Car
   );
 }
 
-export default Card;

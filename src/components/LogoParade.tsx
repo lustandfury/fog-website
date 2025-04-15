@@ -68,12 +68,12 @@ export function LogoParade({
   const renderRow = (logos: Logo[], title: string) => (
     <div className="space-y-6">
       <h3 className="text-xl font-bold text-white text-center uppercase" style={{ fontFamily: "'Open Sans', sans-serif" }}>{title}</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-16">
+      <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
         {logos.map((logo, index) => (
           <div
             key={`${logo.alt}-${index}`}
             className={`
-              flex items-center justify-center
+              flex items-center justify-center flex-shrink-0
               transition-all duration-700
               ${isInitialLoad 
                 ? 'opacity-0 translate-y-4' 
@@ -81,15 +81,15 @@ export function LogoParade({
               }
             `}
             style={{
-              height: '60px',
+              width: '200px',
+              height: '80px',
               transitionDelay: `${index * 150}ms`
             }}
           >
             <img
               src={logo.url}
               alt={logo.alt}
-              className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 hover:opacity-100 brightness-125"
-              style={{ width: logo.width || '150px' }}
+              className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 hover:opacity-100 brightness-125"
             />
           </div>
         ))}
@@ -117,4 +117,3 @@ export function LogoParade({
   );
 }
 
-export default LogoParade;

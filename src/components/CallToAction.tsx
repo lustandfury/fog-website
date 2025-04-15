@@ -35,4 +35,3 @@ export function CallToAction({
   );
 }
 
-export default CallToAction;
