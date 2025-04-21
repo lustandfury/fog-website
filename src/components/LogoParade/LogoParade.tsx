@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 
 interface Logo {
@@ -14,7 +15,7 @@ interface LogoParadeProps {
   row2Title?: string;
   row3Title?: string;
   speed?: number;
-  attributes?: React.HTMLAttributes<HTMLDivElement>;
+  className?: string;
 }
 
 export function LogoParade({ 
@@ -24,7 +25,7 @@ export function LogoParade({
   row1Title = 'Financial Services & Insurance Firms',
   row2Title = 'Enterprise Global Operations',
   row3Title = 'Technology & Innovation Leaders',
-  attributes 
+  className = ''
 }: LogoParadeProps) {
   const [currentRowIndex, setCurrentRowIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -63,7 +64,7 @@ export function LogoParade({
       clearInterval(interval);
       clearTimeout(initialTimer);
     };
-  }, []);
+  }, [rows.length]);
 
   const renderRow = (logos: Logo[], title: string) => (
     <div className="space-y-6">
@@ -100,7 +101,7 @@ export function LogoParade({
   const currentRow = rows[currentRowIndex];
 
   return (
-    <div {...attributes} className={`py-12 ${attributes?.className || ''}`}>
+    <div className={`py-12 ${className}`}>
       <h2 className="text-center mb-3 uppercase text-base font-normal tracking-wider text-white" style={{ fontFamily: "'Open Sans', sans-serif" }}>
         TRUSTED BY LEADING
       </h2>
@@ -115,5 +116,4 @@ export function LogoParade({
       </div>
     </div>
   );
-}
-
+} 
