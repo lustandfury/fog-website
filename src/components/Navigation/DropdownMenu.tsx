@@ -115,7 +115,7 @@ export function DropdownMenu({
                     focusedItemIndex === index ? 'bg-white/5' : ''
                   }`}
                   onMouseEnter={() => onItemHover(`${menuIndex}-${index}`)}
-                  onMouseLeave={() => onItemHover(null)}
+                  onMouseLeave={() => onItemHover('')}
                   onKeyDown={onKeyDown}
                 >
                   <div className="ml-4 flex-grow">

@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@builder.io/dev-tools": "^0.0.40",
-    "@builder.io/react": "^3.0.8",
-    "@builder.io/sdk": "^2.0.4",
+    "@builder.io/react": "^3.2.12",
+    "@builder.io/sdk": "^2.2.9",
     "daisyui": "^3.3.1"
   }
 }

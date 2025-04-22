@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://your-domain.com'), // Replace with your domain
+  metadataBase: new URL('https://your-domain.com'), // To fill out
   title: {
     default: 'Your Site Name',
     template: '%s | Your Site Name'
