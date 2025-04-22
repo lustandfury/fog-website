@@ -65,8 +65,11 @@ export function Navbar({
   let closeTimeout: NodeJS.Timeout;
   const [focusedItemIndex, setFocusedItemIndex] = useState<number>(-1);
   const navRef = useRef<HTMLElement>(null);
+  const isBrowser = typeof window !== 'undefined';
 
   useEffect(() => {
+    if (!isBrowser) return;
+    
     const handleScroll = () => {
       if (isScrollLocked) return;
 
@@ -94,9 +97,11 @@ export function Navbar({
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [lastScrollY, isHoveringTop, isScrollLocked]);
+  }, [lastScrollY, isHoveringTop, isScrollLocked, isBrowser]);
 
   useEffect(() => {
+    if (!isBrowser) return;
+    
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       const timer = setTimeout(() => {
@@ -109,7 +114,7 @@ export function Navbar({
       document.body.style.overflow = '';
       setActiveIndex(-1);
     }
-  }, [isOpen]);
+  }, [isOpen, isBrowser]);
 
   useEffect(() => {
     if (
@@ -164,14 +169,18 @@ export function Navbar({
       case KEYS.SPACE:
         event.preventDefault();
         if (hasUrl && !dropdownItems.length) {
-          window.location.href = primaryItems[index].url!;
+          if (isBrowser) {
+            window.location.href = primaryItems[index].url!;
+          }
         } else if (activeDropdown === null) {
           handleDropdownEnter(index);
         } else if (focusedItemIndex >= 0) {
           const item = dropdownItems[focusedItemIndex];
-          if (item?.url) window.location.href = item.url;
+          if (item?.url && isBrowser) window.location.href = item.url;
         } else if (hasUrl) {
-          window.location.href = primaryItems[index].url!;
+          if (isBrowser) {
+            window.location.href = primaryItems[index].url!;
+          }
         }
         break;
 
@@ -305,7 +314,7 @@ export function Navbar({
           </div>
         </div>
 
-        <style jsx="true">{`
+        <style>{`
           @keyframes dropdownFade {
             from {
               opacity: 0;

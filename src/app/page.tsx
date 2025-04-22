@@ -4,6 +4,9 @@ import { RenderBuilderContent } from "../components/builder";
 // Builder Public API Key set in .env file
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
+// Add revalidation
+export const revalidate = 3600; // revalidate every hour
+
 interface PageProps {
   params: {
     page: string[];
@@ -18,7 +21,7 @@ export default async function Page(props: PageProps) {
         // Use the page path specified in the URL to fetch the content
         urlPath: "/" + (props?.params?.page?.join("/") || ""),
       },
-      // Set prerender to false to return JSON instead of HTML
+      // Set prerender to true to return HTML instead of JSON
       prerender: false,
     })
     // Convert the result to a promise
