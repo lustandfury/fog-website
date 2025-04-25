@@ -90,7 +90,7 @@ export function DropdownMenu({
                         {item.title}
                       </h2>
                       {item.description && (
-                        <p className="text-white/85 text-base">
+                        <p className="text-white text-base">
                           {item.description}
                         </p>
                       )}
